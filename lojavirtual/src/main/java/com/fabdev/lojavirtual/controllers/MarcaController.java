@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fabdev.lojavirtual.entities.Estado;
-import com.fabdev.lojavirtual.services.EstadoService;
+import com.fabdev.lojavirtual.entities.Marca;
+import com.fabdev.lojavirtual.services.MarcaService;
 
 @RestController
-@RequestMapping("/api/estado")
-public class EstadoController {
+@RequestMapping("/api/marca")
+public class MarcaController {
 	
 	@Autowired
-	private EstadoService service; 
+	private MarcaService service;
 	
 	@GetMapping("/")
-	public List<Estado> buscarTodos() {
+	public List<Marca> buscarTodas() {
 		
-		return service.listarTodos();
+		return service.listarTodas();
 	}
 	
 	@PostMapping("/")
-	public Estado inserir(@RequestBody Estado estado) {
+	public Marca inserir(@RequestBody Marca marca) {
 		
-		return service.inserir(estado);
+		return service.inserir(marca);
 	}
 	
 	@PutMapping("/")
-	public Estado alterar(@RequestBody Estado estado) {
+	public Marca alterar(@RequestBody Marca marca) {
 		
-		return service.alterar(estado);
+		return service.alterar(marca);
 	}
 	
 	@DeleteMapping("/{id}")
