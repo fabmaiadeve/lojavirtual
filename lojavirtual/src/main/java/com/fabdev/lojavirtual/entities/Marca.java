@@ -11,8 +11,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "estado")
-public class Estado {
+@Table(name = "marca")
+public class Marca {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,20 +20,17 @@ public class Estado {
 	
 	private String nome;
 	
-	private String sigla;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAtualizacao;	
-	
-	public Estado() {
+	private Date dataAtualizacao;
+
+	public Marca() {
 	}
 
-	public Estado(String nome, String sigla, Date dataCriacao, Date dataAtualizacao) {
+	public Marca(String nome, Date dataCriacao, Date dataAtualizacao) {
 		this.nome = nome;
-		this.sigla = sigla;
 		this.dataCriacao = dataCriacao;
 		this.dataAtualizacao = dataAtualizacao;
 	}
@@ -54,14 +51,6 @@ public class Estado {
 		this.nome = nome;
 	}
 
-	public String getSigla() {
-		return sigla;
-	}
-
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
-	}
-
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -80,8 +69,7 @@ public class Estado {
 
 	@Override
 	public String toString() {
-		return "Estado [id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", dataCriacao=" + dataCriacao
-				+ ", dataAtualizacao=" + dataAtualizacao + "]";
+		return "Marca [id=" + id + ", nome=" + nome + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + "]";
 	}
-
 }
