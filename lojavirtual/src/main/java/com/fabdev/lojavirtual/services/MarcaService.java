@@ -24,8 +24,7 @@ public class MarcaService {
 		
 		marca.setDataCriacao(new Date());
 		Marca marcaNova = rep.saveAndFlush(marca);
-		return marcaNova;
-		
+		return marcaNova;		
 	}
 	
 	public Marca alterar(Marca marca) {
