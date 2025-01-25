@@ -48,7 +48,6 @@ public class Produto {
 
 	public Produto(String descricaoCurta, String descricaoDetalhada, Double valorCusto, Double valorVenda,
 			Date dataCriacao, Date dataAtualizacao, Categoria categoria, Marca marca) {
-		super();
 		this.descricaoCurta = descricaoCurta;
 		this.descricaoDetalhada = descricaoDetalhada;
 		this.valorCusto = valorCusto;
