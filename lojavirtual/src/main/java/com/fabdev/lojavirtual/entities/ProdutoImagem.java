@@ -13,8 +13,8 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "cidade")
-public class Cidade {
+@Table(name = "produto_image")
+public class ProdutoImagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,21 +27,20 @@ public class Cidade {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAtualizacao;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "id_estado")
-	private Estado estado;	
+	@JoinColumn(name = "id_produto")
+	private Produto produto;
 
 		
-	public Cidade() {
+	public ProdutoImagem() {
 	}
 
-	public Cidade(String nome, Date dataCriacao, Date dataAtualizacao, Estado estado) {
-		super();
+	public ProdutoImagem(String nome, Date dataCriacao, Date dataAtualizacao, Produto produto) {
 		this.nome = nome;
 		this.dataCriacao = dataCriacao;
 		this.dataAtualizacao = dataAtualizacao;
-		this.estado = estado;
+		this.produto = produto;
 	}
 
 
@@ -76,18 +75,18 @@ public class Cidade {
 	public void setDataAtualizacao(Date dataAtualizacao) {
 		this.dataAtualizacao = dataAtualizacao;
 	}
-	
-	public Estado getEstado() {
-		return estado;
+
+	public Produto getProduto() {
+		return produto;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override
 	public String toString() {
-		return "Cidade [id=" + id + ", nome=" + nome + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
-				+ dataAtualizacao + ", estado=" + estado + "]";
+		return "ProdutoImagem [id=" + id + ", nome=" + nome + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + ", produto=" + produto + "]";
 	}
 }
