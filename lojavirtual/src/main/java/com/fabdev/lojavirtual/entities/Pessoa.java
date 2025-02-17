@@ -1,13 +1,16 @@
 package com.fabdev.lojavirtual.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -39,6 +42,9 @@ public class Pessoa {
 	@ManyToOne
 	@JoinColumn(name = "id_cidade")
 	private Cidade cidade;
+	
+	@OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<PermissaoPessoa> permissaoPessoas;
 
 	
 	public Pessoa() {
@@ -126,12 +132,23 @@ public class Pessoa {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}	
+
+	public List<PermissaoPessoa> getPermissaoPessoas() {
+		return permissaoPessoas;
+	}
+
+	public void setPermissaoPessoas(List<PermissaoPessoa> permissaoPessoas) {
+		for(PermissaoPessoa p : permissaoPessoas) {
+			p.setPessoa(this);
+		}
+		this.permissaoPessoas = permissaoPessoas;
 	}
 
 	@Override
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", endereco=" + endereco
 				+ ", cep=" + cep + ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", cidade="
-				+ cidade + "]";
+				+ cidade + ", permissaoPessoas=" + permissaoPessoas + "]";
 	}
 }
