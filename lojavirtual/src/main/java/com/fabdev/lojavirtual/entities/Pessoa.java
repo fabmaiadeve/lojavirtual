@@ -29,6 +29,8 @@ public class Pessoa {
 	
 	private String email;
 	
+	private String senha;
+	
 	private String endereco;
 	
 	private String cep;
@@ -50,11 +52,12 @@ public class Pessoa {
 	public Pessoa() {
 	}
 
-	public Pessoa(String nome, String cpf, String email, String endereco, String cep, Date dataCriacao,
+	public Pessoa(String nome, String cpf, String email, String senha, String endereco, String cep, Date dataCriacao,
 			Date dataAtualizacao, Cidade cidade) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.senha = senha;
 		this.endereco = endereco;
 		this.cep = cep;
 		this.dataCriacao = dataCriacao;
@@ -92,6 +95,14 @@ public class Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getEndereco() {
@@ -147,8 +158,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", endereco=" + endereco
-				+ ", cep=" + cep + ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", cidade="
-				+ cidade + ", permissaoPessoas=" + permissaoPessoas + "]";
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha=" + senha
+				+ ", endereco=" + endereco + ", cep=" + cep + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + ", cidade=" + cidade + ", permissaoPessoas=" + permissaoPessoas + "]";
 	}
 }
