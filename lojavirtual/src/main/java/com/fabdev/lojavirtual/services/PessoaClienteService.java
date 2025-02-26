@@ -19,6 +19,9 @@ public class PessoaClienteService {
 	@Autowired
 	private PermissaoPessoaService permissaoPessoaService;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public Pessoa registrar(PessoaClienteRequestDto dto) {
 		
 		Pessoa pessoa = dto.converter(dto);
@@ -27,6 +30,8 @@ public class PessoaClienteService {
 		Pessoa pessoaNova = rep.saveAndFlush(pessoa);
 		
 		permissaoPessoaService.vincularPessoaPermissaoCliente(pessoaNova);
+		
+		emailService.enviarEmailTexto(pessoaNova.getEmail(), "Cadastro na loja virtual", "O registro na loja foi realizado com sucesso!");
 		
 		return pessoaNova;
 	}

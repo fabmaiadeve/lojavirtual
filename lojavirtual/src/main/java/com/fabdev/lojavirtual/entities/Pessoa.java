@@ -29,6 +29,11 @@ public class Pessoa {
 	
 	private String email;
 	
+	private String codigoRecuperacaoSenha;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataEnvioCodigo;
+	
 	private String senha;
 	
 	private String endereco;
@@ -52,11 +57,13 @@ public class Pessoa {
 	public Pessoa() {
 	}
 
-	public Pessoa(String nome, String cpf, String email, String senha, String endereco, String cep, Date dataCriacao,
+	public Pessoa(String nome, String cpf, String email, String codigoRecuperacaoSenha, Date dataEnvioCodigo, String senha, String endereco, String cep, Date dataCriacao,
 			Date dataAtualizacao, Cidade cidade) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.codigoRecuperacaoSenha = codigoRecuperacaoSenha;
+		this.dataEnvioCodigo = dataEnvioCodigo;
 		this.senha = senha;
 		this.endereco = endereco;
 		this.cep = cep;
@@ -97,6 +104,22 @@ public class Pessoa {
 		this.email = email;
 	}
 	
+	public String getCodigoRecuperacaoSenha() {
+		return codigoRecuperacaoSenha;
+	}
+
+	public void setCodigoRecuperacaoSenha(String codigoRecuperacaoSenha) {
+		this.codigoRecuperacaoSenha = codigoRecuperacaoSenha;
+	}
+	
+	public Date getDataEnvioCodigo() {
+		return dataEnvioCodigo;
+	}
+
+	public void setDataEnvioCodigo(Date dataEnvioCodigo) {
+		this.dataEnvioCodigo = dataEnvioCodigo;
+	}
+
 	public String getSenha() {
 		return senha;
 	}
@@ -158,7 +181,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha=" + senha
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", codigoRecuperacaoSenha="
+				+ codigoRecuperacaoSenha + ", dataEnvioCodigo=" + dataEnvioCodigo + ", senha=" + senha
 				+ ", endereco=" + endereco + ", cep=" + cep + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
 				+ dataAtualizacao + ", cidade=" + cidade + ", permissaoPessoas=" + permissaoPessoas + "]";
 	}
