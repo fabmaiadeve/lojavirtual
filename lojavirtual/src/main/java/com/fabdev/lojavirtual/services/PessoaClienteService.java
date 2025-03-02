@@ -1,6 +1,8 @@
 package com.fabdev.lojavirtual.services;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +33,12 @@ public class PessoaClienteService {
 		
 		permissaoPessoaService.vincularPessoaPermissaoCliente(pessoaNova);
 		
-		emailService.enviarEmailTexto(pessoaNova.getEmail(), "Cadastro na loja virtual", "O registro na loja foi realizado com sucesso!");
+		//emailService.enviarEmailTexto(pessoaNova.getEmail(), "Cadastro na loja virtual", "O registro na loja foi realizado com sucesso!");
+		Map<String, Object> propMap = new HashMap<>();
+		propMap.put("nome", pessoaNova.getNome());
+		propMap.put("mensagem", "O registro na loja foi realizado com sucesso!");
+		
+		emailService.enviarEmailTemplate(pessoaNova.getEmail(), "Cadastro na loja virtual", propMap);
 		
 		return pessoaNova;
 	}
